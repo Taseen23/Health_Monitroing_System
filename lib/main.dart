@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project/home_page1.dart';
 import 'package:test_project/login.dart';
@@ -6,11 +7,13 @@ import 'package:test_project/utils/routes.dart';
 
 
 
-void main() {
-  runApp(First_project());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(HEALTH_MONITORING());
 }
 
-class First_project extends StatelessWidget {
+class HEALTH_MONITORING extends StatelessWidget {
 
 
   @override

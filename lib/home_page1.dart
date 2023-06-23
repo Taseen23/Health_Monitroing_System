@@ -1,93 +1,93 @@
 import 'package:flutter/material.dart';
+
 import 'package:test_project/widget.dart';
-import '';
+
+
 
 class HomePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar:AppBar(
-        title: Text("Health Monitoring"),
+        title: const Text("Health Monitoring"),
       ),
+        body: Center(
+          child: GridView(
+            
+             
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+             ),
+            children: [
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8),
+                color: Colors.red[100],
+                child: const Text("Profile",style: TextStyle(
+                  color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25,),
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8),
+                color: Colors.red[200],
+                child: const Text('Heart Bit Rate',style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25,),
+              ),),
 
-      body:Center(child:
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8),
+                color: Colors.red[300],
+                child: const Text('Oxygen Level',style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25,),),
+    ),
+
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8),
+                color: Colors.red[400],
+                child: const Text('Temperature',style: TextStyle(
+    color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25,),
+    ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8),
+                color: Colors.red[500],
+                child: const Text('Revolution is coming...'),
+              ),
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8),
+                color: Colors.red[600],
+                child: const Text('Revolution  is coming...'),
+              ),
+            ],
+
+    )
+
+
+        ),
 
 
 
+    drawer: MyDrawer(),
 
-             //children: [
-               Container(
-                 alignment: Alignment.topLeft,
-                 child: InkWell(
-                   child: SizedBox(
-                     width: 200.0,
-                     height: 250.0,
-                     child: Padding(
-                       padding: const EdgeInsets.all(0),
-                       child: AnimatedContainer(
-                         duration: Duration(seconds: 1),
-                         width: 250,
-                         height: 250,
 
-                         alignment: Alignment.center,
-                         child:
-                              Text("Profle", style: TextStyle(
-                           color: Colors.white, fontWeight: FontWeight.normal, fontSize: 30,),
-                         ),
-                         decoration: BoxDecoration(
-                           color: Colors.deepOrange,
-                           shape: BoxShape.rectangle,
-
-                           //borderRadius: BorderRadius.circular(changebutton?50:8),
-                         ),
-                       ),
-                     ),
-                   ),
-                 ),
-               ),
-              // Container(
-               //  alignment: Alignment.topRight,
-
-                // child:
-                 //InkWell(
-                  // child: SizedBox(
-                   //  width: 211.0,
-                    // height: 250.0,
-                    // child: Padding(
-                      // padding: const EdgeInsets.all(0),
-                       //child: AnimatedContainer(
-                        // duration: Duration(seconds: 1),
-                         //width: 250,
-                         //height: 250,
-
-                         //alignment: Alignment.center,
-                         //child:
-                         //Text("Heart Bit Rate", style: TextStyle(
-                          // color: Colors.white, fontWeight: FontWeight.normal, fontSize: 30,),
-                         //),
-                         ///decoration: BoxDecoration(
-                           //color: Colors.pinkAccent,
-                           //shape: BoxShape.rectangle,
-
-                           //borderRadius: BorderRadius.circular(changebutton?50:8),
-                         ),
-                       ),
-                     ),
-                   ),
-                 ),
-               ),
+      );
 
 
 
 
-         ),
-         ),
 
 
 
 
-          drawer: MyDrawer(),
 
-    );
+
+
+
   }
 }
