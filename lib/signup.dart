@@ -1,7 +1,12 @@
+///import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project/utils/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:test_project/widget.dart';
+
+import 'HomePage.dart';
 
 
 
@@ -13,16 +18,19 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
 
+
     var email;
     var password;
     register() async {
       FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-      final User? user = (await firebaseAuth.createUserWithEmailAndPassword(
+      final User user = (await firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password)).user;
       if (user != null) {
         await //Future.delayed(Duration(seconds: 2));
         // ignore: use_build_context_synchronously
-        Navigator.pushNamed(context, MyRoutes.homepage) ;
+        Navigator.push(context, CupertinoPageRoute(builder: (context)=>HomePage(user : user,)));
+
+        //////////Navigator.pushNamed(context, MyRoutes.homepage) ;
       }
       else {
         print("error");

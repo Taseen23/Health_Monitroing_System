@@ -19,7 +19,7 @@ class LoginPage extends StatefulWidget {
   bool changesignupbutton=false;
   login()async{
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-    final User? user = (await firebaseAuth.signInWithEmailAndPassword(email: email, password: password)).user;
+    final User user = (await firebaseAuth.signInWithEmailAndPassword(email: email, password: password)).user;
     if (user!=null){
       await //Future.delayed(Duration(seconds: 2));
       // ignore: use_build_context_synchronously

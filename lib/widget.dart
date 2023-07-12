@@ -2,10 +2,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test_project/signup.dart';
+import 'package:test_project/utils/routes.dart';
+///////import 'package:test_project/signup.dart';
 
 class MyDrawer extends StatelessWidget {
-  User? user;
+  User user;
   MyDrawer ({this.user});
   @override
     Widget build(BuildContext context){
@@ -18,11 +19,11 @@ class MyDrawer extends StatelessWidget {
             DrawerHeader(
               padding:EdgeInsets.zero,
                 child: UserAccountsDrawerHeader(
-
-              accountEmail: Text("Taseen Alam Dehan"),
+                    ////////accountEmail: Text("20103264@iubat.edu"),
+             accountEmail: Text(user.email.toString()),
               accountName: Text("Taseen Alam Dehan"),
                currentAccountPicture: CircleAvatar(
-                 backgroundImage: NetworkImage('https://scontent.fdac7-1.fna.fbcdn.net/v/t39.30808-6/354257480_3361754970756760_7671974307845587493_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeErkZeGGIGCHNFWaPxgIYkEwnhRIZL5mELCeFEhkvmYQtKRwsXbVeebzdFuXwsK6pyb_ZmvjSaDzM94ihNCE1y5&_nc_ohc=mghJw1gZD98AX902HD9&_nc_pt=1&_nc_ht=scontent.fdac7-1.fna&oh=00_AfCvG87rOV7Efip7Y1LMBGZd9OOyXicafg3DXPQV3R0-pQ&oe=6499EC4B'),
+                 backgroundImage: NetworkImage('https://www.facebook.com/messenger_media/?attachment_id=1330498180878882&message_id=mid.%24cAAAAAefgzh-PYvz2_GJMbeppyLJN&thread_id=100009361145553'),
                )             //   currentAccountPicture: Image.asset("assists/images/1664440310932.jpeg")
             )
             ),
@@ -51,10 +52,19 @@ class MyDrawer extends StatelessWidget {
               ),
 
               title:
+              InkWell(
+                onTap: () async{
 
-                const Text("Log Out",textScaleFactor: 1.2,style: TextStyle(color: Colors.black87,
+
+                  await Future.delayed(Duration(seconds: 0));
+                  Navigator.pushNamed(context, MyRoutes.homepage);
+                },
+
+                 child: Text("Log Out",textScaleFactor: 1.2,style: TextStyle(color: Colors.black87,
+
                 ),
                 ),
+              )
 
 
 
