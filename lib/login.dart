@@ -34,6 +34,7 @@ class LoginPage extends StatefulWidget {
      return Material(
        child: SingleChildScrollView(
          child: Column(children: [
+           SizedBox(height: 18.0,),
            Image.asset("assists/images/login.png", fit: BoxFit.fill),
            SizedBox(height: 20.0,),
            Text(
