@@ -16,11 +16,11 @@ class MyDrawer extends StatelessWidget {
       ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               padding:EdgeInsets.zero,
                 child: UserAccountsDrawerHeader(
-                    ////////accountEmail: Text("20103264@iubat.edu"),
-             accountEmail: Text(user.email.toString()),
+                    accountEmail: Text("20103264@iubat.edu"),
+            /////////// accountEmail: Text(user.email.toString()),
               accountName: Text("Taseen Alam Dehan"),
                currentAccountPicture: CircleAvatar(
                  backgroundImage: NetworkImage('https://www.facebook.com/messenger_media/?attachment_id=1330498180878882&message_id=mid.%24cAAAAAefgzh-PYvz2_GJMbeppyLJN&thread_id=100009361145553'),

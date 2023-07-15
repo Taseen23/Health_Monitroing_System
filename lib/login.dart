@@ -15,6 +15,7 @@ class LoginPage extends StatefulWidget {
    var email;
    var password;
 
+
   bool changebutton=false;
   bool changesignupbutton=false;
   login()async{
@@ -120,9 +121,44 @@ class LoginPage extends StatefulWidget {
 
 
                   ),
-               SizedBox(height: 20.0,),
+               SizedBox(height: 3.0,),
 
-               SizedBox(
+
+               Container(
+                  // alignment: Alignment.center,
+                 //  padding: const EdgeInsets.all(8),
+                  // color: Colors.red[300],
+                   //child:  Text("Don't have an Account?"),
+                   child: GestureDetector(
+
+
+                     onTap: () async{
+
+
+                       await Future.delayed(Duration(seconds: 0));
+                       Navigator.pushNamed(context, MyRoutes.signuppage);
+                     },
+                     child:
+                     const Text.rich(
+                       TextSpan(
+                         text: "Don't have an Account?",style: TextStyle(
+                         color: Colors.black, fontWeight: FontWeight.bold, fontSize: 12,), // default text style
+                         children: <TextSpan>[
+                           TextSpan(text: " Signup", style: TextStyle(
+                             color: Colors.lightBlue, fontWeight: FontWeight.bold, fontSize: 12,),),
+
+                         ],
+                       ),
+                     )
+                     /* const Text("Don't have an Account?  Signup",style: TextStyle(
+                       color: Colors.black, fontWeight: FontWeight.bold, fontSize: 12,),), */
+                   )
+
+               ),
+
+
+
+               /* SizedBox(
                  height:40,
                  child: InkWell(
 
@@ -153,6 +189,7 @@ class LoginPage extends StatefulWidget {
 
                  ),
                ),
+               */
 
              ],
              ),

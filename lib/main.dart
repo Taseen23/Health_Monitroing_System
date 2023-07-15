@@ -4,10 +4,10 @@ import 'package:test_project/HomePage.dart';
 import 'package:test_project/login.dart';
 import 'package:test_project/profile.dart';
 import 'package:test_project/signup.dart';
-import 'package:test_project/temparature.dart';
+import 'package:test_project/Paremeters%20Page/temparature.dart';
 import 'package:test_project/utils/routes.dart';
-import 'Oxygen_level.dart';
-import 'heart_bitrate.dart';
+import 'Paremeters Page/Oxygen_level.dart';
+import 'Paremeters Page/heart_bitrate.dart';
 
 
 
