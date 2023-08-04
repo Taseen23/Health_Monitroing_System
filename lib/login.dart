@@ -18,16 +18,22 @@ class LoginPage extends StatefulWidget {
 
   bool changebutton=false;
   bool changesignupbutton=false;
+  error(){
+
+  }
   login()async{
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-    final User user = (await firebaseAuth.signInWithEmailAndPassword(email: email, password: password)).user;
+    final User? user = (await firebaseAuth.signInWithEmailAndPassword(email: email, password: password)).user;
     if (user!=null){
       await //Future.delayed(Duration(seconds: 2));
       // ignore: use_build_context_synchronously
       Navigator.pushNamed(context, MyRoutes.loginpage, arguments: user);
     }
     else {
-      print("error");
+
+
+
+      //print("error");
     }
   }
    Widget build(BuildContext context) {

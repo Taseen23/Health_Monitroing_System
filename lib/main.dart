@@ -9,8 +9,6 @@ import 'package:test_project/utils/routes.dart';
 import 'Paremeters Page/Oxygen_level.dart';
 import 'Paremeters Page/heart_bitrate.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -18,32 +16,20 @@ void main() async {
 }
 
 class test_project extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: HomePage(),
       routes: {
-        MyRoutes.homepage: (Context)  => LoginPage(),
-        MyRoutes.loginpage : (Context) => HomePage(),
-        MyRoutes.signuppage: (Context)  => SignupPage(),
-        MyRoutes.heartbitrate: (Context)  => Heart_Bit_Rate(),
-        MyRoutes.oxygen_level: (Context)  => Oxygen_Level(),
-        MyRoutes.temparature: (Context)  => Temparature(),
-        MyRoutes.profile: (Context)  => profile(),
-
-
-
-
+        MyRoutes.homepage: (Context) => LoginPage(),
+        MyRoutes.loginpage: (Context) => HomePage(),
+        MyRoutes.signuppage: (Context) => SignupPage(),
+        MyRoutes.heartbitrate: (Context) => Heart_Bit_Rate(),
+        MyRoutes.oxygen_level: (Context) => Oxygen_Level(),
+        MyRoutes.temparature: (Context) => Temparature(),
+        MyRoutes.profile: (Context) => profile(),
       },
-    ) ;
-
-
-
+    );
   }
-
 }
-

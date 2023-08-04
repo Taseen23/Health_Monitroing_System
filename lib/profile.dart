@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class profile extends StatelessWidget {
@@ -8,7 +7,6 @@ class profile extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Profile"),
       ),
-
     );
   }
 }
