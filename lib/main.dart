@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project/HomePage.dart';
+import 'package:test_project/forget_pass.dart';
 import 'package:test_project/login.dart';
 import 'package:test_project/profile.dart';
 import 'package:test_project/signup.dart';
@@ -8,6 +9,9 @@ import 'package:test_project/Paremeters%20Page/temparature.dart';
 import 'package:test_project/utils/routes.dart';
 import 'Paremeters Page/Oxygen_level.dart';
 import 'Paremeters Page/heart_bitrate.dart';
+import 'auth.dart';
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +24,7 @@ class test_project extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginPage(),
       routes: {
         MyRoutes.homepage: (Context) => LoginPage(),
         MyRoutes.loginpage: (Context) => HomePage(),
@@ -29,6 +33,9 @@ class test_project extends StatelessWidget {
         MyRoutes.oxygen_level: (Context) => Oxygen_Level(),
         MyRoutes.temparature: (Context) => Temparature(),
         MyRoutes.profile: (Context) => profile(),
+        MyRoutes.authentication: (Context) => Authpage(),
+        MyRoutes.forget_pass: (Context) => Forget_pass(),
+
       },
     );
   }

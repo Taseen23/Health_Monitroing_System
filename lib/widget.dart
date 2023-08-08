@@ -2,12 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project/utils/routes.dart';
-///////import 'package:test_project/signup.dart';
+
 
 class MyDrawer extends StatelessWidget {
-  //User user;
+  final user = FirebaseAuth.instance.currentUser!;
 
-  //MyDrawer ({this.user});
   @override
   Widget build(BuildContext context) {
     // final imageURL = "https://www.facebook.com/photo/?fbid=3218877588377833&set=a.1374795032786107";
@@ -18,9 +17,9 @@ class MyDrawer extends StatelessWidget {
           DrawerHeader(
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
-                  accountEmail: Text("20103264@iubat.edu"),
+                  // accountEmail: Text("20103264@iubat.edu"),
 
-                  // accountEmail: Text(user.email.toString()),
+                  accountEmail: Text(user.email.toString()),
                   accountName: Text("Taseen Alam Dehan"),
                   currentAccountPicture: CircleAvatar(
                     backgroundImage: NetworkImage(

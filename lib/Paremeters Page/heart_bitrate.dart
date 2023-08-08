@@ -1,4 +1,4 @@
-import 'package:firebase_database/firebase_database.dart';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -11,14 +11,9 @@ class Heart_Bit_Rate extends StatefulWidget {
 
 class _Heart_Bit_RateState extends State<Heart_Bit_Rate> {
   final _userStream =
-      FirebaseFirestore.instance.collection("users").snapshots();
+      FirebaseFirestore.instance.collection("heartbit").snapshots();
 
-  // Future getdata() async {
-  // var firestore = FirebaseFirestore.instance;
-  //  QuerySnapshot qn = await firestore.collection("Heart_Bit Data")
-  //     .get() as QuerySnapshot<Object>;
-  //  return qn.docs;
-  // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +37,12 @@ class _Heart_Bit_RateState extends State<Heart_Bit_Rate> {
               return ListView.builder(
                   itemCount: docs.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: const Icon(Icons.person),
-                      title: Text(docs[index]['name']),
-                      //subtitle: Text('${docs[index]['age']} years old'),
+                    return Card(
+                      child:ListTile(
+                      leading: const Icon(Icons.account_circle),
+                      title: Text('${docs[index]['Name']}'),
+                     subtitle: Text('${docs[index]['BPM']} '),
+                    ),
                     );
                   });
             })

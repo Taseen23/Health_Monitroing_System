@@ -2,6 +2,7 @@
 
 import 'package:animated_background/animated_background.dart';
 import 'package:animated_background/particles.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,16 +14,161 @@ import 'package:particles_flutter/particles_flutter.dart';
 import 'HomePage.dart';
 
 class SignupPage extends StatefulWidget {
+  const SignupPage({Key? key}) : super(key: key);
+
+
+ // const SignupPage({ Key? key, }):super (key: key);
   @override
   State<SignupPage> createState() => _SignupPageState();
 }
 
+
+
+
+
 class _SignupPageState extends State<SignupPage>
     with SingleTickerProviderStateMixin {
-  var email;
+  final _firstnameController = TextEditingController();
+  final _lastnameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmpasswordController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _firstnameController.dispose();
+    _lastnameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmpasswordController.dispose();
+  }
+
+
+  Future signup() async {
+    if (passConfirmed()) {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+
+
+
+      );
+
+
+      //add user details
+      addUserdetails(
+
+        _firstnameController.text.trim(),
+        _lastnameController.text.trim(),
+        _emailController.text.trim(),
+
+
+
+
+
+
+      );
+
+
+
+    }
+    if (_emailController != null && _passwordController != null ) {
+      //await //Future.delayed(Duration(seconds: 2));
+      // ignore: use_build_context_synchronously
+      // Navigator.pushNamed(context, MyRoutes.homepage)
+      Navigator.push(
+          context,
+          CupertinoPageRoute(
+              builder: (context) => HomePage()));
+
+      //////////Navigator.pushNamed(context, MyRoutes.homepage) ;
+    } else {
+      print("error");
+    }
+  }
+
+  Future addUserdetails(String firstName, String lastName, String email) async{
+    await FirebaseFirestore.instance.collection('users').add(
+        {
+          'first name': firstName,
+          'last name' : lastName,
+          'email' : email,
+        }
+    );
+  }
+
+
+
+
+  bool passConfirmed(){
+    if(_passwordController.text.trim() == _confirmpasswordController.text.trim()){
+      return true;
+      Navigator.push(
+          context,
+          CupertinoPageRoute(
+              builder: (context) => HomePage()));
+    }
+    else {
+      return false;
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+     /* if (_emailController != null) {
+      Navigator.push(
+          context,
+          CupertinoPageRoute(
+              builder: (context) => HomePage()));
+    }
+
+
+*/
+
+     /*  if (_emailController != null && _passwordController != null ) {
+      //await //Future.delayed(Duration(seconds: 2));
+ // ignore: use_build_context_synchronously
+     // Navigator.pushNamed(context, MyRoutes.homepage)
+      Navigator.push(
+          context,
+          CupertinoPageRoute(
+              builder: (context) => HomePage()));
+
+      //////////Navigator.pushNamed(context, MyRoutes.homepage) ;
+    } else {
+    print("error");
+    }
+
+
+
+
+
+  }
+*/
+ /* Future addUserdetails(String firstName, String lastName, String email) async{
+    await FirebaseFirestore.instance.collection('users').add(
+      {
+        'first name': firstName,
+        'last name' : lastName,
+        'email' : email,
+      }
+    );
+  }
+*/
+
+ /* var email;
   var password;
 
-  register() async {
+ register() async {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     final User? user = (await firebaseAuth.createUserWithEmailAndPassword(
             email: email, password: password))
@@ -42,9 +188,10 @@ class _SignupPageState extends State<SignupPage>
       print("error");
     }
   }
+*/
 
-  bool changesignupbutton = false;
-  bool nevigate = false;
+  //bool changesignupbutton = false;
+  //bool nevigate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +251,12 @@ class _SignupPageState extends State<SignupPage>
               child: TextFormField
                   //Padding(padding: Size.fromWidth(20), Size.fromHeight(30),
                   (
+                controller: _firstnameController,
                 decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12)
+                  ),
                   hintText: "Enter Username",
                   labelText: "First Name",
                 ),
@@ -116,7 +268,12 @@ class _SignupPageState extends State<SignupPage>
             SizedBox(
               width: 300,
               child: TextFormField(
+                controller: _lastnameController,
                 decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
                   hintText: "Enter Username",
                   labelText: "Last Name",
                 ),
@@ -128,12 +285,17 @@ class _SignupPageState extends State<SignupPage>
             SizedBox(
               width: 300,
               child: TextFormField(
-                onChanged: (value) {
+                controller: _emailController,
+               /* onChanged: (value) {
                   setState(() {
                     email = value;
                   });
-                },
+                }, */
                 decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
                   hintText: "User Email Address",
                   labelText: "Email Address",
                 ),
@@ -145,13 +307,20 @@ class _SignupPageState extends State<SignupPage>
             SizedBox(
               width: 300,
               child: TextFormField(
-                onChanged: (value) {
+                controller: _passwordController,
+              /*  onChanged: (value) {
                   setState(() {
                     password = value;
                   });
                 },
+
+               */
                 obscureText: true,
                 decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
                   hintText: "Enter New Password",
                   labelText: "Create Password",
                 ),
@@ -163,8 +332,13 @@ class _SignupPageState extends State<SignupPage>
             SizedBox(
               width: 300,
               child: TextFormField(
+                controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
                   hintText: "Enter Confirm Password",
                   labelText: "Confirm Password",
                 ),
@@ -179,17 +353,14 @@ class _SignupPageState extends State<SignupPage>
               child:
 
               ElevatedButton(
-                onPressed: register,
+                onPressed: signup  ,
                 child:Text('Sign Up'),
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xffd97348),
+                  backgroundColor: Color(0xffd97348),
                   //Color(0xffeb6f1c),
 
                 ),
-              //  decoration: BoxDecoration(
-               //   color: Colors.blue,
-                //  shape: changesignupbutton?BoxShape.circle:BoxShape.rectangle,
-                //const Text('signup'),
+
               ),
             ),
 

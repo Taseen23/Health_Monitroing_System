@@ -6,5 +6,8 @@ class MyRoutes{
   static String temparature="/temparature";
   static String oxygen_level="/Oxygen_level";
   static String profile="/profile";
+  static String authentication="/Authpage";
+  static String forget_pass="/Forget_pass";
+
 
 }

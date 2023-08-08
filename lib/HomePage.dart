@@ -6,7 +6,7 @@ import 'package:test_project/widget.dart';
 
 class HomePage extends StatelessWidget {
   // User user;
-
+  final user = FirebaseAuth.instance.currentUser!;
   // HomePage({this.user});
 
   @override
